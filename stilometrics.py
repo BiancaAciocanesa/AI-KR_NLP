@@ -1,5 +1,3 @@
-import matplotlib.pyplot as plt
-
 with open("romanian.txt", "r", encoding="utf-8") as romanian_file:
     text = romanian_file.read()
 
@@ -7,7 +5,6 @@ with open("romanian.txt", "r", encoding="utf-8") as romanian_file:
 for ch in text:
     if ch in ['.',',','!','?','\n']:
         text = text.replace(ch, '')
-
 words = text.split(' ')
 
 #total num of words + avg word len
@@ -22,7 +19,6 @@ for word_len in word_lengths:
         length_distribution[word_len] = 1
     else:
         length_distribution[word_len] += 1
-
 sorted_length_distribution = list(length_distribution.items())
 sorted_length_distribution = sorted(sorted_length_distribution, key= lambda v : v)
 
@@ -33,11 +29,9 @@ for word in words:
         word_frequency[word] = 1
     else:
         word_frequency[word] += 1
-
 sorted_word_frequency = list(word_frequency.items())
 sorted_word_frequency = sorted(sorted_word_frequency, key= lambda v : v[1], reverse=True)
 first_10_most_used = sorted_word_frequency[:10]
-
 
 # vowels versus consonants
 vowels = set("aeiouăâîAEIOUĂÂÎ")
@@ -49,11 +43,11 @@ letter_frequency = {}
 for word in words:
     for char in word:
         if char.isalpha():
+            char = char.lower()
             if char not in letter_frequency:
                 letter_frequency[char] = 0
             else:
                 letter_frequency[char] += 1
-
 sorted_letter_frequency = list(letter_frequency.items())
 sorted_letter_frequency = sorted(sorted_letter_frequency, key= lambda v : v[0])
 
