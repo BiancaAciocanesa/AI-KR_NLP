@@ -58,3 +58,29 @@ print(f"Distributia lungimii cuvintelor: {sorted_length_distribution}")
 print(f"Top 10 cuvinte cu nr max de aparitii: {first_10_most_used}")
 print(f"Nr vocale: {vowel_count}\nNr de consoane: {consonant_count}\nMedie: {(vowel_count / consonant_count)}")
 print(f"Nr aparitii litere: {sorted_letter_frequency}")
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(12, 6))
+
+plt.subplot(1, 2, 1)
+lengths = list(length_distribution.keys())
+counts = list(length_distribution.values())
+plt.bar(lengths, counts, color="skyblue")
+plt.title("Distribuția lungimii cuvintelor")
+plt.xlabel("Lungimea cuvântului")
+plt.ylabel("Număr de cuvinte")
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+
+plt.subplot(1, 2, 2)
+letters = list(letter_frequency.keys())
+frequencies = list(letter_frequency.values())
+plt.bar(letters, frequencies, color="lightcoral")
+plt.title("Frecvența literelor")
+plt.xlabel("Litere")
+plt.ylabel("Frecvență")
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+plt.tight_layout()
+plt.show()
